@@ -11,7 +11,7 @@
 
     <hr/>
     <ul style="display: flex; gap:30px;">
-        @foreach([1, 2, 3, 4, 5, "hola"] as $item)
+        @foreach($arr as $item)
             <li><span>{{$item}}</span></li>
         @endforeach
     </ul>

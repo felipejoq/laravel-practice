@@ -16,7 +16,10 @@ class Contact extends Controller
     }
 
     function contact2(): View {
-        $data = ['name' => 'Jane Doe'];
+        $data = [
+            'name' => 'Jane Doe',
+            'arr' => ['one', 'two', 'three'],
+        ];
 
         return view('contact2', $data);
     }
