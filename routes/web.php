@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Global\Contact;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,22 +16,8 @@ Route::get('/test', function () {
     return view('test', $data);
 });
 
-Route::get('/contact-1', function () {
+Route::get('/contact-1', [Contact::class, 'index'])
+    ->name('contact.1');
 
-    $data = ['name1' => 'John Doe'];
-
-    return redirect()
-        ->route('contact.2')
-        ->setStatusCode(301);
-
-    // return view('contact1', $data);
-
-})->name('contact.1');
-
-Route::get('/contact-2', function () {
-
-    $data = ['name' => 'Jane Doe'];
-
-    return view('contact2', $data);
-
-})->name('contact.2');
+Route::get('/contact-2', [Contact::class, 'contact2'])
+    ->name('contact.2');
