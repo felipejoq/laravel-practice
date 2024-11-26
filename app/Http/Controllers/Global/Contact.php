@@ -21,6 +21,6 @@ class Contact extends Controller
             'arr' => ['one', 'two', 'three'],
         ];
 
-        return view('contact2', $data);
+        return view('contact2', compact('data'));
     }
 }

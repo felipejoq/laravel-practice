@@ -2,8 +2,8 @@
 
 @section('content')
     <h1>Contact 2</h1>
-    <p>{{$name}}</p>
-    @if($name === "Jane Doe")
+    <p>{{$data['name']}}</p>
+    @if($data['name'] === "Jane Doe")
         <p>Hi Jane!</p>
     @else
         <p>Hi Stranger!</p>
@@ -11,7 +11,7 @@
 
     <hr/>
     <ul style="display: flex; gap:30px;">
-        @foreach($arr as $item)
+        @foreach($data['arr'] as $item)
             <li><span>{{$item}}</span></li>
         @endforeach
     </ul>
