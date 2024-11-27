@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class Contact extends Controller
+class ContactController extends Controller
 {
     function index(): RedirectResponse {
         return redirect()
