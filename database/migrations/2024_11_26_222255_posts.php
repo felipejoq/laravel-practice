@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug', 500)->unique();
             $table->string('title', 500);
             $table->string('excerpt', 500);
-            $table->string('image')->nullable();
+            $table->string('image')->default('/images/default-img.webp');
             $table->text('content');
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
@@ -32,6 +32,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('posts');
-        Schema::dropIfExists('categories');
     }
 };

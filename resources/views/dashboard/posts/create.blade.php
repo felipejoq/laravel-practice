@@ -4,16 +4,7 @@
 
 @section('content')
     <main class="flex flex-col items-center">
-        @if($errors->any())
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
-                <p class="font-bold">Hubo un error</p>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('dashboard.fragment._errors-form')
         <h1>Crear un post</h1>
         <form action="{{ route('posts.store') }}" method="post" class="flex flex-col gap-4 min-w-96">
             @csrf
@@ -23,7 +14,7 @@
             </p>
             <p>
                 <label>URL Imagen</label>
-                <input class="border-2" type="text" name="image" id="image" value="{{ old('image') }}" required>
+                <input class="border-2" type="text" name="image" id="image" value="{{ old('image') }}">
             </p>
             <p>
                 <label>Resumen</label>

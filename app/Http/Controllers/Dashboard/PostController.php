@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index() {
         $posts = Post::all();
 
-        return response()->json($posts);
+        return view('dashboard.posts.index', compact('posts'));
     }
 
     /**
@@ -32,9 +32,15 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreRequest $request) {
+        $data = $request->validated();
 
-        Post::create($request->validated());
-        return to_route('posts.index');
+        if (empty($data['image'])) {
+            $data['image'] = '/images/default-img.webp';
+        }
+
+        Post::create($data);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**

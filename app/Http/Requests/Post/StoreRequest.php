@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest {
             'title' => 'required|min:3|max:255',
             'excerpt' => 'required|min:3|max:255',
             // Validate image is an url
-            'image' => 'required|url',
+            'image' => 'nullable|url',
             'content' => 'required|min:3',
             'category_id' => 'required|integer|exists:categories,id',
             // 'slug' => 'required|unique:posts,slug',
