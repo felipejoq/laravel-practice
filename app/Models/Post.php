@@ -29,10 +29,19 @@ class Post extends Model {
         });
     }
 
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = $value ?: '/images/default-img.webp';
+    }
+
     protected static function generateUniqueSlug($title): string {
         $slug = Str::slug($title);
         $count = static::where('slug', 'LIKE', "{$slug}%")->count();
 
         return $count ? "{$slug}-{$count}" : $slug;
+    }
+
+    public function getRouteKeyName(): string {
+        return 'slug';
     }
 }
