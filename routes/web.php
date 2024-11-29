@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::resource('posts', PostController::class)->except(['show']);
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
-Route::patch('/posts/{post}/toggle-status', [PostController::class, 'toggleStatus'])->name('posts.toggleStatus');
+Route::get('/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::patch('/{post}/toggle-status', [PostController::class, 'toggleStatus'])->name('posts.toggleStatus');
 
 Route::resource('categories', CategoryController::class);

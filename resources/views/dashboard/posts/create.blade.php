@@ -20,8 +20,7 @@
             @endif
 
             <label for="slug">Slug</label>
-            <input class="border-2" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}"
-                   required>
+            <input class="border-2" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" required>
             <!-- show the error message if the slug field has an error -->
             @if($errors->has('slug'))
                 <p class="text-red-500">{{ $errors->first('slug') }}</p>
@@ -76,8 +75,13 @@
                 <p class="text-red-500">{{ $errors->first('status') }}</p>
             @endif
 
-            <button class="px-4 py-2 bg-green-50 hover:bg-green-600 hover:text-white"
-                    type="submit">{{ isset($post) ? 'Actualizar post' : 'Crear post' }}</button>
+            <button class="px-4 py-2 bg-green-50 hover:bg-green-600 hover:text-white" type="submit">
+                {{ isset($post) ? 'Actualizar' : 'Crear' }}
+            </button>
+
+            <a href="{{ route('posts.index') }}" class="px-4 py-2 bg-red-50 hover:bg-red-600 hover:text-white text-center">
+                Cancelar
+            </a>
         </form>
     </main>
 @endsection
