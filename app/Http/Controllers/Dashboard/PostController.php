@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,6 @@ class PostController extends Controller
     public function index() {
         $posts = Post::all();
 
-        // return json
         return response()->json($posts);
     }
 
@@ -22,16 +23,18 @@ class PostController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-        return "This is the create page of the PostController";
+        $categories = Category::pluck('name', 'id');
+
+        return view('dashboard.posts.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(StoreRequest $request) {
 
-
-        return "Post created successfully";
+        Post::create($request->validated());
+        return to_route('posts.index');
     }
 
     /**
