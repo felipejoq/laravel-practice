@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Post;
 
+use App\Rules\ImageUrlOrDefault;
+use App\Rules\NoSpaces;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest {
     /**
@@ -21,11 +24,13 @@ class StoreRequest extends FormRequest {
         return [
             'title' => 'required|min:3|max:255',
             'excerpt' => 'required|min:3|max:255',
-            // Validate image is an url
-            'image' => 'nullable|url',
+            'image' => ['nullable', new ImageUrlOrDefault],
             'content' => 'required|min:3',
             'category_id' => 'required|integer|exists:categories,id',
-            // 'slug' => 'required|unique:posts,slug',
+            'slug' => [
+                new NoSpaces,
+                Rule::unique('posts')->ignore($this->post),
+            ],
             'status' => 'required|in:draft,published',
         ];
     }

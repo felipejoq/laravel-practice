@@ -25,7 +25,9 @@ class Post extends Model {
         parent::boot();
 
         static::creating(function ($post) {
-            $post->slug = static::generateUniqueSlug($post->title);
+            if (empty($post->slug)) {
+                $post->slug = static::generateUniqueSlug($post->title);
+            }
         });
     }
 
