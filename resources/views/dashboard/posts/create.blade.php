@@ -16,21 +16,21 @@
                    required>
             <!-- show the error message if the title field has an error -->
             @if($errors->has('title'))
-                <p class="text-red-500">{{ $errors->first('title') }}</p>
+                <small class="text-red-500">{{ $errors->first('title') }}</small>
             @endif
 
             <label for="slug">Slug</label>
-            <input class="border-2" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}" required>
+            <input class="border-2" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug ?? '') }}">
             <!-- show the error message if the slug field has an error -->
             @if($errors->has('slug'))
-                <p class="text-red-500">{{ $errors->first('slug') }}</p>
+                <small class="text-red-500">{{ $errors->first('slug') }}</small>
             @endif
 
             <label>URL Imagen</label>
             <input class="border-2" type="text" name="image" id="image" value="{{ old('image', $post->image ?? '') }}">
             <!-- show the error message if the image field has an error -->
             @if($errors->has('image'))
-                <p class="text-red-500">{{ $errors->first('image') }}</p>
+                <small class="text-red-500">{{ $errors->first('image') }}</small>
             @endif
 
             <label>Resumen</label>
@@ -38,14 +38,14 @@
                    value="{{ old('excerpt', $post->excerpt ?? '') }}" required>
             <!-- show the error message if the excerpt field has an error -->
             @if($errors->has('excerpt'))
-                <p class="text-red-500">{{ $errors->first('excerpt') }}</p>
+                <small class="text-red-500">{{ $errors->first('excerpt') }}</small>
             @endif
 
             <label for="content">Contenido</label>
             <textarea class="border-2" name="content" id="content" cols="30" rows="10" required>{{ old('content', $post->content ?? '') }}</textarea>
             <!-- show the error message if the content field has an error -->
             @if($errors->has('content'))
-                <p class="text-red-500">{{ $errors->first('content') }}</p>
+                <small class="text-red-500">{{ $errors->first('content') }}</small>
             @endif
 
             <label for="category_id">Categoría</label>
@@ -58,7 +58,7 @@
             </select>
             <!-- show the error message if the category_id field has an error -->
             @if($errors->has('category_id'))
-                <p class="text-red-500">{{ $errors->first('category_id') }}</p>
+                <small class="text-red-500">{{ $errors->first('category_id') }}</small>
             @endif
 
             <label for="status">Estado</label>
@@ -72,14 +72,14 @@
             </select>
             <!-- show the error message if the status field has an error -->
             @if($errors->has('status'))
-                <p class="text-red-500">{{ $errors->first('status') }}</p>
+                <small class="text-red-500">{{ $errors->first('status') }}</small>
             @endif
 
-            <button class="px-4 py-2 bg-green-50 hover:bg-green-600 hover:text-white" type="submit">
+            <button class="px-4 py-2 bg-green-100 hover:bg-green-600 hover:text-white" type="submit">
                 {{ isset($post) ? 'Actualizar' : 'Crear' }}
             </button>
 
-            <a href="{{ route('posts.index') }}" class="px-4 py-2 bg-red-50 hover:bg-red-600 hover:text-white text-center">
+            <a href="{{ route('posts.index') }}" class="px-4 py-2 bg-red-100 hover:bg-red-600 hover:text-white text-center">
                 Cancelar
             </a>
         </form>

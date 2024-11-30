@@ -13,7 +13,7 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $posts = Post::latest()->paginate(2);
+        $posts = Post::latest()->paginate(5);
 
         return view('dashboard.posts.index', compact('posts'));
     }
